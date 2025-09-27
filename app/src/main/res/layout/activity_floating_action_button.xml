@@ -60,4 +60,21 @@
         app:srcCompat="@drawable/ic_alerta_24"
         app:tint="#DCDCDC" />
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/floatingActionButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:text="Salvar"
+        android:textColor="#F6F5F5"
+        app:backgroundTint="#050505"
+        app:icon="@drawable/ic_salvar_24"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#B30808" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
