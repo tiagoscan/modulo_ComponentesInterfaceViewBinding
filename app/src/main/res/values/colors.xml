@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightBlue">#5795DC</color>
+    <color name="darkBlue">#042190</color> <!-- Cor Azul para ligado -->
+    <color name="grey">#B6B4B4</color> <!-- Cor Cinza para desligado -->
+
 </resources>
