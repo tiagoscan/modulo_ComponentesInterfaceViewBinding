@@ -22,4 +22,42 @@
         app:srcCompat="@drawable/ic_adicionar_24"
         app:tint="#FFFFFF" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="fabCamera,fabAlerta"
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:backgroundTint="#575757"
+        app:fabCustomSize="46dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabBotao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_adicionar_foto_24"
+        app:tint="#DCDCDC" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAlerta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:backgroundTint="#575757"
+        app:fabCustomSize="46dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabCamera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_alerta_24"
+        app:tint="#DCDCDC" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
