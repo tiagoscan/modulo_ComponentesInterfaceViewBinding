@@ -2,8 +2,12 @@ package com.mentoriaandroid.aulacomponentesinterfaceviewbinding
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -27,14 +31,19 @@ class FormularioActivity : AppCompatActivity() {
             insets
         }
 
+        spinnerExibicao()
+
         with(binding){
 
             btnEnviar.setOnClickListener { view ->
                 //checkbox()
                 //radioButton()
                 //swithToggle()
-                exibirSnackbar(view)
-                //Toast.makeText(this, "Mensagem", Toast.LENGTH_SHORT).show()
+                //exibirSnackbar(view)
+                //caixaDialogAlerta()
+                spinnerSelecionarItem()
+
+
 
             }
 
@@ -54,6 +63,97 @@ class FormularioActivity : AppCompatActivity() {
             }*/
 
         }
+    }
+
+    private fun spinnerSelecionarItem() {
+        val itemSelecionado = binding.spinnerCategorias.selectedItem
+        val itemPosicao = binding.spinnerCategorias.selectedItemPosition
+
+        if( itemPosicao == 0 ){
+                    binding.textResultado.text = "Selecione um item"
+        }else {
+            binding.textResultado.text = "selecionado: $itemSelecionado / pos: $itemPosicao"
+        }
+    }
+
+    private fun spinnerExibicao() {
+
+
+      /*  val categorias = resources.getStringArray(
+            R.array.categorias
+        )*/
+        /*val categorias = listOf(
+            "Selecione uma categoria",
+            "Eletrônicos","Roupas", "Móveis", "Roupas"
+        )*/
+
+        binding.spinnerCategorias.adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.categorias,
+            android.R.layout.simple_spinner_dropdown_item
+        )
+
+     /*   binding.spinnerCategorias.adapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            categorias
+        )*/
+
+        /*binding.spinnerCategorias.onItemSelectedListener = object: OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //val itemSelecionado = parent?.getItemAtPosition(position)
+                val itemSelecionado = parent?.selectedItem
+                binding.textResultado.text = itemSelecionado.toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }*/
+    }
+
+    private fun caixaDialogAlerta() {
+
+        AlertDialog.Builder(this)
+            .setTitle("Confirmação exlusão do item")
+            .setMessage("Tem certeza que quer remover?")
+            .setNegativeButton("Cancelar"){dialog, posicao ->
+                Toast.makeText(this, "cancelar ($posicao)", Toast.LENGTH_SHORT).show()}
+            .setPositiveButton("Remover"){dialog, posicao ->
+                Toast.makeText(this, "Remover ($posicao)", Toast.LENGTH_SHORT).show()}
+            .setCancelable(false)
+            .create()
+            .show()
+
+
+        /*val alertBuilder = AlertDialog.Builder(this)
+        alertBuilder.setTitle("Confirmação exlusão do item")
+        alertBuilder.setMessage("Tem certeza que quer remover?")
+        alertBuilder.setNegativeButton("Cancelar"){dialog, posicao ->
+            Toast.makeText(this, "cancelar ($posicao)", Toast.LENGTH_SHORT).show()
+
+        //dialog.dismiss()
+        }
+
+        alertBuilder.setPositiveButton("Remover"){dialog, posicao ->
+            Toast.makeText(this, "Remover ($posicao)", Toast.LENGTH_SHORT).show()
+        }
+
+        alertBuilder.setCancelable(false)
+        alertBuilder.setNeutralButton("Ajuda"){dialog, posicao ->
+            Toast.makeText(this, "Ajuda ($posicao)", Toast.LENGTH_SHORT).show()
+        }
+
+        alertBuilder.setIcon(R.drawable.ic_alerta_24)
+
+        val alertDialog = alertBuilder.create()
+        alertDialog.show()*/
     }
 
     private fun exibirSnackbar(view: View) {
