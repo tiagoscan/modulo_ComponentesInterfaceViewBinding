@@ -42,9 +42,6 @@ class FormularioActivity : AppCompatActivity() {
                 //exibirSnackbar(view)
                 //caixaDialogAlerta()
                 spinnerSelecionarItem()
-
-
-
             }
 
             rbMasculino.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -99,7 +96,7 @@ class FormularioActivity : AppCompatActivity() {
             categorias
         )*/
 
-        /*binding.spinnerCategorias.onItemSelectedListener = object: OnItemSelectedListener{
+        binding.spinnerCategorias.onItemSelectedListener = object: OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -115,7 +112,7 @@ class FormularioActivity : AppCompatActivity() {
 
             }
 
-        }*/
+        }
     }
 
     private fun caixaDialogAlerta() {
