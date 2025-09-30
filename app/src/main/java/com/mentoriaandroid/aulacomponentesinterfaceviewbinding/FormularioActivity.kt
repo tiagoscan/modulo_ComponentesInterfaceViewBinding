@@ -2,6 +2,9 @@ package com.mentoriaandroid.aulacomponentesinterfaceviewbinding
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -28,6 +31,8 @@ class FormularioActivity : AppCompatActivity() {
             insets
         }
 
+        spinnerExibicao()
+
         with(binding){
 
             btnEnviar.setOnClickListener { view ->
@@ -35,9 +40,8 @@ class FormularioActivity : AppCompatActivity() {
                 //radioButton()
                 //swithToggle()
                 //exibirSnackbar(view)
-                caixaDialogAlerta()
-
-
+                //caixaDialogAlerta()
+                spinnerSelecionarItem()
             }
 
             rbMasculino.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -54,6 +58,59 @@ class FormularioActivity : AppCompatActivity() {
                 val resultado = if( selecionado ) "Sim" else "Não"
                 binding.textResultado.text = "Valor selecionado $selecionado"
             }*/
+
+        }
+    }
+
+    private fun spinnerSelecionarItem() {
+        val itemSelecionado = binding.spinnerCategorias.selectedItem
+        val itemPosicao = binding.spinnerCategorias.selectedItemPosition
+
+        if( itemPosicao == 0 ){
+                    binding.textResultado.text = "Selecione um item"
+        }else {
+            binding.textResultado.text = "selecionado: $itemSelecionado / pos: $itemPosicao"
+        }
+    }
+
+    private fun spinnerExibicao() {
+
+
+      /*  val categorias = resources.getStringArray(
+            R.array.categorias
+        )*/
+        /*val categorias = listOf(
+            "Selecione uma categoria",
+            "Eletrônicos","Roupas", "Móveis", "Roupas"
+        )*/
+
+        binding.spinnerCategorias.adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.categorias,
+            android.R.layout.simple_spinner_dropdown_item
+        )
+
+     /*   binding.spinnerCategorias.adapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            categorias
+        )*/
+
+        binding.spinnerCategorias.onItemSelectedListener = object: OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //val itemSelecionado = parent?.getItemAtPosition(position)
+                val itemSelecionado = parent?.selectedItem
+                binding.textResultado.text = itemSelecionado.toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
 
         }
     }
