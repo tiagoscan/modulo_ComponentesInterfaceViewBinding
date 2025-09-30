@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -27,11 +28,49 @@ class ToolbarActionbarActivity : AppCompatActivity() {
             insets
         }
 
+        inicializarToolBar()
         //supportActionBar?.show()
+        //inicializarActionBar()
+
+
+
+    }
+
+    private fun inicializarToolBar() {
+
+        binding.tbPrincipal.title = "Youtube"
+        binding.tbPrincipal.setTitleTextColor(
+            ContextCompat.getColor(this, R.color.white)
+        )
+        //binding.tbPrincipal.subtitle = "Mais detalhes"
+        /*binding.tbPrincipal.inflateMenu(R.menu.menu_principal)
+        binding.tbPrincipal.setOnMenuItemClickListener { menuItem ->
+            when( menuItem.itemId ){
+                R.id.item_adicionar -> {
+                    Toast.makeText(applicationContext, "Adicionar", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.item_pesquisar -> {
+                    Toast.makeText(applicationContext, "Pesquisar", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.item_configuracoes -> {
+                    Toast.makeText(applicationContext, "Configurações", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.item_sair -> {
+                    Toast.makeText(applicationContext, "Sair", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                else -> {
+                    return@setOnMenuItemClickListener true
+                }
+            }
+
+        }*/
+
+        setSupportActionBar( binding.tbPrincipal )
         inicializarActionBar()
-
-
-
     }
 
     private fun inicializarActionBar() {
