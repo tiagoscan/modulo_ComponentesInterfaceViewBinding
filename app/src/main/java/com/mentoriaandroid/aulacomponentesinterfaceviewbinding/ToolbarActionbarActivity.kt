@@ -38,8 +38,8 @@ class ToolbarActionbarActivity : AppCompatActivity() {
 
     private fun inicializarToolBar() {
 
-        binding.tbPrincipal.title = "Youtube"
-        binding.tbPrincipal.setTitleTextColor(
+        binding.includeToolBar.tbPrincipal.title = "Youtube"
+        binding.includeToolBar.tbPrincipal.setTitleTextColor(
             ContextCompat.getColor(this, R.color.white)
         )
         //binding.tbPrincipal.subtitle = "Mais detalhes"
@@ -69,7 +69,7 @@ class ToolbarActionbarActivity : AppCompatActivity() {
 
         }*/
 
-        setSupportActionBar( binding.tbPrincipal )
+        setSupportActionBar( binding.includeToolBar.tbPrincipal )
         inicializarActionBar()
     }
 
