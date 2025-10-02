@@ -1,5 +1,6 @@
 package com.mentoriaandroid.aulacomponentesinterfaceviewbinding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -37,6 +38,10 @@ class ToolbarActionbarActivity : AppCompatActivity() {
     }
 
     private fun inicializarToolBar() {
+
+        binding.btnAbrirNova.setOnClickListener {
+            startActivity(Intent(this, NovaActivity::class.java))
+        }
 
         binding.includeToolBar.tbPrincipal.title = "Youtube"
         binding.includeToolBar.tbPrincipal.setTitleTextColor(
